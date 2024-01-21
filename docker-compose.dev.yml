@@ -26,32 +26,32 @@ services:
     ports:
       - "8080:8080"
 
-#  celery-beat:
-#    container_name: celery_beat
-#    build:
-#      context: ./backend
-#    command: celery -A config beat -l info
-#    env_file:
-#      - backend/.env
-#    volumes:
-#      - ./backend:/usr/src/backend
-#    depends_on:
-#      - backend
-#      - redis
-#
-#  celery-worker:
-#    container_name: celery_worker
-#    build:
-#      context: ./backend
-#    command: celery -A config worker -l info --pool=gevent
-#    env_file:
-#      - backend/.env
-#    volumes:
-#      - ./backend:/usr/src/backend
-#    depends_on:
-#      - backend
-#      - redis
-#
-#  redis:
-#    container_name: redis
-#    image: redis:alpine
+  celery-beat:
+    container_name: events_celery_beat
+    build:
+      context: ./backend
+    command: celery -A config beat -l info
+    env_file:
+      - backend/.env
+    volumes:
+      - ./backend:/usr/src/backend
+    depends_on:
+      - backend
+      - redis
+
+  celery-worker:
+    container_name: events_celery_worker
+    build:
+      context: ./backend
+    command: celery -A config worker -l info
+    env_file:
+      - backend/.env
+    volumes:
+      - ./backend:/usr/src/backend
+    depends_on:
+      - backend
+      - redis
+
+  redis:
+    container_name: events_redis
+    image: redis:alpine

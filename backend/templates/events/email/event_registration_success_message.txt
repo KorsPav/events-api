@@ -1,0 +1,6 @@
+Hi {{ user_full_name }},
+We are happy to confirm your registration to our event:
+{{event_title}}
+See you there!
+
+Best regards, Events.com team

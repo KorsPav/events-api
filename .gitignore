@@ -17,3 +17,4 @@ media/
 backend/staticfiles/*
 backend/nginx_logs/*
 events_db_data/*
+backend/celerybeat-schedule

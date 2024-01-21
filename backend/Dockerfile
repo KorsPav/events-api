@@ -14,5 +14,3 @@ RUN poetry install --no-dev
 RUN chmod +x entrypoint.sh
 
 COPY . .
-
-ENTRYPOINT ["bash", "/usr/src/backend/entrypoint.sh"]

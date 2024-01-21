@@ -16,6 +16,7 @@ django-anymail = "^10.2"
 celery = "^5.3.6"
 redis = "^5.0.1"
 django-allauth = "^0.60.1"
+django-filter = "^23.5"
 
 
 [build-system]
