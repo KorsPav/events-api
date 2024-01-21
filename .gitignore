@@ -1,0 +1,19 @@
+### Common ###
+*.log
+*.pot
+*.pyc
+__pycache__/
+__pypackages__/
+*.DS_Store
+Thumbs.db
+### PyCharm ###
+.idea
+### Environments ###
+*.env
+### Project ###
+media/
+.mypy_cache
+*.logs
+backend/staticfiles/*
+backend/nginx_logs/*
+events_db_data/*

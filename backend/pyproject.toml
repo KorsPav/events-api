@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "events-api"
+version = "0.1.0"
+description = ""
+authors = ["Pavlo Korshykov <pavel.korshikov@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "3.10.7"
+django = "^5.0.1"
+djangorestframework = "^3.14.0"
+django-cors-headers = "^4.3.1"
+gunicorn = "^21.2.0"
+psycopg = "^3.1.17"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

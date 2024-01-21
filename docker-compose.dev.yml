@@ -1,0 +1,57 @@
+version: "3.9"
+
+
+services:
+  postgres:
+    container_name: events_postgres
+    image: postgres:15
+    env_file:
+      - backend/.env
+    volumes:
+      - ./dev_db_data:/var/lib/postgresql/data
+    ports:
+      - "7001:5432"
+
+  backend:
+    container_name: events_backend
+    build:
+      context: ./backend
+    env_file:
+      - backend/.env
+    entrypoint: ["bash", "/usr/src/backend/entrypoint.sh"]
+    volumes:
+      - ./backend:/usr/src/backend
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+
+#  celery-beat:
+#    container_name: celery_beat
+#    build:
+#      context: ./backend
+#    command: celery -A config beat -l info
+#    env_file:
+#      - backend/.env
+#    volumes:
+#      - ./backend:/usr/src/backend
+#    depends_on:
+#      - backend
+#      - redis
+#
+#  celery-worker:
+#    container_name: celery_worker
+#    build:
+#      context: ./backend
+#    command: celery -A config worker -l info --pool=gevent
+#    env_file:
+#      - backend/.env
+#    volumes:
+#      - ./backend:/usr/src/backend
+#    depends_on:
+#      - backend
+#      - redis
+#
+#  redis:
+#    container_name: redis
+#    image: redis:alpine
